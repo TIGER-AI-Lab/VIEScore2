@@ -1,0 +1,31 @@
+# Data, checkpoints and environments — all live outside git (see README "Setup").
+data/
+sft_samples/
+sft_samples_save/
+sft_unified.jsonl
+qwen*_train_data/
+checkpoints/
+last_run_prepared/
+venv/
+.venv/
+axolotl*
+
+# Built eval sets. The four suite files under eval_samples/ that ARE tracked are
+# shipped deliberately (tab:external); everything else here is rebuilt by
+# viescore2/build_eval.py and the build_*_eval.py scripts.
+eval_samples/
+
+# Run output
+logs/
+wandb/
+*.log
+
+# Secrets and local tooling
+.env
+.git-credentials
+.claude/
+.DS_Store
+__pycache__/
+*.pyc
+.tmp/
+eval_results_external/shards/

@@ -1,0 +1,44 @@
+# VIEScore2 pinned environment (Python 3.11).
+#
+# Install ORDER matters — follow these three steps, do not plain
+# `pip install -r` in one shot:
+#
+#   uv venv --python 3.11 --seed .venv && source .venv/bin/activate
+#   # 1) torch stack from the cu128 index
+#   uv pip install torch==2.11.0 torchvision --index-url https://download.pytorch.org/whl/cu128
+#   # 2) everything below
+#   uv pip install -r requirements.txt
+#   # 3) OPTIONAL, only for vLLM-served evals: install vllm last, then
+#   #    re-pin the core four on top (vllm relaxes them; TRL only warns):
+#   uv pip install vllm==0.23.0
+#   uv pip install torch==2.11.0 torchvision transformers==5.9.0 trl==1.5.1 \
+#       tokenizers==0.22.2 --index-url https://download.pytorch.org/whl/cu128
+#
+# GRPO does NOT need vllm (the paper's runs use --no-vllm; see
+# viescore2/train_grpo.py). Baseline-specific dependency shims
+# (older transformers for Q-Align / Q-Insight / ImageDoctor / legacy scalar
+# scorers) are documented in the respective eval script docstrings.
+
+transformers==5.9.0
+trl==1.5.1
+tokenizers==0.22.2
+datasets==4.8.5
+peft==0.19.1
+accelerate==1.13.0
+axolotl==0.17.0
+bitsandbytes
+deepspeed
+scipy
+numpy
+pillow
+huggingface_hub
+pyyaml          # scripts/train_sft.py writes the Axolotl config
+
+# Closed-model rows only (run_eval.py --api-backend {openai,google});
+# imported lazily, so the rest of the pipeline runs without them.
+openai
+google-genai
+
+# Optional: OpenCV gives the preferred contour/Douglas-Peucker mask
+# simplification in the SFT builder; there is a pure-numpy fallback.
+# opencv-python-headless

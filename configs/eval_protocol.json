@@ -1,0 +1,62 @@
+{
+  "_comment": "Source-matched eval prompt schemas (P0-1). Each entry mirrors what that source's TRAINING rows actually asked for, measured directly on $DATA_ROOT/viescore2_data_full/train.json (2026-07-27 scan): RichHF 13,920 rows dual-axis+channels; EvalMuse 9,000 rows bare 'score:' template (legacy EM builder, no grid request); PAL4VST 8,177 rows grid-only no-score; ImagenWorld/COCO/TIG dual-axis flat grid. Passed to run_eval.py via --protocol-config; sources not listed fall back to the global CLI flags.",
+  "_schema": "source -> {with_score: bool(default true), axes: bool(default false), channels: bool(default false), score_only: bool(default false; replaces the whole prompt with the verbatim EvalMuse score-only template)}",
+  "RichHF-18K": {
+    "with_score": true,
+    "axes": true,
+    "channels": true
+  },
+  "PAL4VST-test": {
+    "with_score": false,
+    "axes": false,
+    "channels": false
+  },
+  "EvalMuse": {
+    "score_only": true
+  },
+  "ImagenWorld-TIG": {
+    "with_score": true,
+    "axes": true,
+    "channels": false
+  },
+  "ImagenWorld-TIE": {
+    "with_score": true,
+    "axes": true,
+    "channels": false
+  },
+  "ImagenWorld-SRIG": {
+    "with_score": true,
+    "axes": true,
+    "channels": false
+  },
+  "ImagenWorld-SRIE": {
+    "with_score": true,
+    "axes": true,
+    "channels": false
+  },
+  "ImagenWorld-MRIG": {
+    "with_score": true,
+    "axes": true,
+    "channels": false
+  },
+  "ImagenWorld-MRIE": {
+    "with_score": true,
+    "axes": true,
+    "channels": false
+  },
+  "COCO-real": {
+    "with_score": true,
+    "axes": true,
+    "channels": false
+  },
+  "MMRB2-T2I": {
+    "with_score": true,
+    "axes": true,
+    "channels": false
+  },
+  "MMRB2-Edit": {
+    "with_score": true,
+    "axes": true,
+    "channels": false
+  }
+}

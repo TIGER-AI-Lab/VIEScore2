@@ -1,0 +1,504 @@
+{
+ "training_data": [
+  {
+   "path": "$DATA_ROOT/viescore2_data_full/train.json",
+   "md5": "d35310acefd06cde25f5443007628f3b",
+   "n_rows": 38122,
+   "sources": {
+    "COCO-real": {
+     "n": 2218,
+     "n_clean": 2218,
+     "n_problem": 0,
+     "n_conditioned": 0,
+     "supervision": {
+      "localization": 2218,
+      "channels": 0,
+      "overall_score": 0,
+      "pq": 2218,
+      "sc": 2218
+     },
+     "prompt_schemas": {
+      "{\"axes\": true, \"channels\": false, \"grid\": true, \"score1\": false}": 2218
+     },
+     "target_schemas": {
+      "{\"channels\": false, \"grid\": true, \"pq\": true, \"sc\": true, \"score\": false}": 2218
+     },
+     "gt_cells": {
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "max": 0
+     },
+     "target_chars": {
+      "p50": 24,
+      "p90": 24,
+      "p99": 24,
+      "max": 24
+     },
+     "template_captions": 0
+    },
+    "EvalMuse": {
+     "n": 9000,
+     "n_clean": 0,
+     "n_problem": 0,
+     "n_conditioned": 0,
+     "supervision": {
+      "localization": 0,
+      "channels": 0,
+      "overall_score": 9000,
+      "pq": 0,
+      "sc": 0
+     },
+     "prompt_schemas": {
+      "{\"axes\": false, \"channels\": false, \"grid\": false, \"score1\": true}": 9000
+     },
+     "target_schemas": {
+      "{\"channels\": false, \"grid\": false, \"pq\": false, \"sc\": false, \"score\": true}": 9000
+     },
+     "gt_cells": {
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "max": 0
+     },
+     "target_chars": {
+      "p50": 11,
+      "p90": 11,
+      "p99": 12,
+      "max": 12
+     }
+    },
+    "ImagenWorld-edit": {
+     "n": 3642,
+     "n_clean": 37,
+     "n_problem": 3605,
+     "n_conditioned": 3642,
+     "supervision": {
+      "localization": 3642,
+      "channels": 0,
+      "overall_score": 0,
+      "pq": 3642,
+      "sc": 3642
+     },
+     "prompt_schemas": {
+      "{\"axes\": true, \"channels\": false, \"grid\": true, \"score1\": false}": 3642
+     },
+     "target_schemas": {
+      "{\"channels\": false, \"grid\": true, \"pq\": true, \"sc\": true, \"score\": false}": 3642
+     },
+     "gt_cells": {
+      "p50": 57,
+      "p90": 174,
+      "p99": 252,
+      "max": 256
+     },
+     "target_chars": {
+      "p50": 201,
+      "p90": 505,
+      "p99": 703,
+      "max": 714
+     }
+    },
+    "PAL4VST": {
+     "n": 8177,
+     "n_clean": 813,
+     "n_problem": 7364,
+     "n_conditioned": 0,
+     "supervision": {
+      "localization": 8177,
+      "channels": 0,
+      "overall_score": 0,
+      "pq": 0,
+      "sc": 0
+     },
+     "prompt_schemas": {
+      "{\"axes\": false, \"channels\": false, \"grid\": true, \"score1\": false}": 8177
+     },
+     "target_schemas": {
+      "{\"channels\": false, \"grid\": true, \"pq\": false, \"sc\": false, \"score\": false}": 8177
+     },
+     "gt_cells": {
+      "p50": 8,
+      "p90": 38,
+      "p99": 103,
+      "max": 256
+     },
+     "target_chars": {
+      "p50": 35,
+      "p90": 130,
+      "p99": 318,
+      "max": 694
+     }
+    },
+    "RichHF-18K": {
+     "n": 13920,
+     "n_clean": 0,
+     "n_problem": 13920,
+     "n_conditioned": 0,
+     "supervision": {
+      "localization": 13920,
+      "channels": 13920,
+      "overall_score": 0,
+      "pq": 13920,
+      "sc": 13920
+     },
+     "prompt_schemas": {
+      "{\"axes\": true, \"channels\": true, \"grid\": true, \"score1\": false}": 13920
+     },
+     "target_schemas": {
+      "{\"channels\": true, \"grid\": true, \"pq\": true, \"sc\": true, \"score\": false}": 13920
+     },
+     "gt_cells": {
+      "p50": 23,
+      "p90": 43,
+      "p99": 68,
+      "max": 120
+     },
+     "target_chars": {
+      "p50": 147,
+      "p90": 228,
+      "p99": 315,
+      "max": 502
+     }
+    },
+    "core-flat-single": {
+     "n": 1165,
+     "n_clean": 11,
+     "n_problem": 1154,
+     "n_conditioned": 0,
+     "supervision": {
+      "localization": 1165,
+      "channels": 0,
+      "overall_score": 0,
+      "pq": 1165,
+      "sc": 1165
+     },
+     "prompt_schemas": {
+      "{\"axes\": true, \"channels\": false, \"grid\": true, \"score1\": false}": 1165
+     },
+     "target_schemas": {
+      "{\"channels\": false, \"grid\": true, \"pq\": true, \"sc\": true, \"score\": false}": 1165
+     },
+     "gt_cells": {
+      "p50": 59,
+      "p90": 169,
+      "p99": 256,
+      "max": 256
+     },
+     "target_chars": {
+      "p50": 199,
+      "p90": 497,
+      "p99": 712,
+      "max": 714
+     }
+    }
+   }
+  },
+  {
+   "path": "$DATA_ROOT/viescore2_data_full/val.json",
+   "md5": "f6124590c949f8faa3846aa14b0b52de",
+   "n_rows": 4234,
+   "sources": {
+    "COCO-real": {
+     "n": 272,
+     "n_clean": 272,
+     "n_problem": 0,
+     "n_conditioned": 0,
+     "supervision": {
+      "localization": 272,
+      "channels": 0,
+      "overall_score": 0,
+      "pq": 272,
+      "sc": 272
+     },
+     "prompt_schemas": {
+      "{\"axes\": true, \"channels\": false, \"grid\": true, \"score1\": false}": 272
+     },
+     "target_schemas": {
+      "{\"channels\": false, \"grid\": true, \"pq\": true, \"sc\": true, \"score\": false}": 272
+     },
+     "gt_cells": {
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "max": 0
+     },
+     "target_chars": {
+      "p50": 24,
+      "p90": 24,
+      "p99": 24,
+      "max": 24
+     },
+     "template_captions": 0
+    },
+    "EvalMuse": {
+     "n": 1000,
+     "n_clean": 0,
+     "n_problem": 0,
+     "n_conditioned": 0,
+     "supervision": {
+      "localization": 0,
+      "channels": 0,
+      "overall_score": 1000,
+      "pq": 0,
+      "sc": 0
+     },
+     "prompt_schemas": {
+      "{\"axes\": false, \"channels\": false, \"grid\": false, \"score1\": true}": 1000
+     },
+     "target_schemas": {
+      "{\"channels\": false, \"grid\": false, \"pq\": false, \"sc\": false, \"score\": true}": 1000
+     },
+     "gt_cells": {
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "max": 0
+     },
+     "target_chars": {
+      "p50": 11,
+      "p90": 11,
+      "p99": 12,
+      "max": 12
+     }
+    },
+    "ImagenWorld-edit": {
+     "n": 415,
+     "n_clean": 5,
+     "n_problem": 410,
+     "n_conditioned": 415,
+     "supervision": {
+      "localization": 415,
+      "channels": 0,
+      "overall_score": 0,
+      "pq": 415,
+      "sc": 415
+     },
+     "prompt_schemas": {
+      "{\"axes\": true, \"channels\": false, \"grid\": true, \"score1\": false}": 415
+     },
+     "target_schemas": {
+      "{\"channels\": false, \"grid\": true, \"pq\": true, \"sc\": true, \"score\": false}": 415
+     },
+     "gt_cells": {
+      "p50": 56,
+      "p90": 164,
+      "p99": 243,
+      "max": 256
+     },
+     "target_chars": {
+      "p50": 189,
+      "p90": 470,
+      "p99": 679,
+      "max": 712
+     }
+    },
+    "PAL4VST": {
+     "n": 908,
+     "n_clean": 95,
+     "n_problem": 813,
+     "n_conditioned": 0,
+     "supervision": {
+      "localization": 908,
+      "channels": 0,
+      "overall_score": 0,
+      "pq": 0,
+      "sc": 0
+     },
+     "prompt_schemas": {
+      "{\"axes\": false, \"channels\": false, \"grid\": true, \"score1\": false}": 908
+     },
+     "target_schemas": {
+      "{\"channels\": false, \"grid\": true, \"pq\": false, \"sc\": false, \"score\": false}": 908
+     },
+     "gt_cells": {
+      "p50": 8,
+      "p90": 36,
+      "p99": 107,
+      "max": 256
+     },
+     "target_chars": {
+      "p50": 36,
+      "p90": 126,
+      "p99": 333,
+      "max": 694
+     }
+    },
+    "RichHF-18K": {
+     "n": 1518,
+     "n_clean": 0,
+     "n_problem": 1518,
+     "n_conditioned": 0,
+     "supervision": {
+      "localization": 1518,
+      "channels": 1518,
+      "overall_score": 0,
+      "pq": 1518,
+      "sc": 1518
+     },
+     "prompt_schemas": {
+      "{\"axes\": true, \"channels\": true, \"grid\": true, \"score1\": false}": 1518
+     },
+     "target_schemas": {
+      "{\"channels\": true, \"grid\": true, \"pq\": true, \"sc\": true, \"score\": false}": 1518
+     },
+     "gt_cells": {
+      "p50": 23,
+      "p90": 41,
+      "p99": 64,
+      "max": 108
+     },
+     "target_chars": {
+      "p50": 149,
+      "p90": 221,
+      "p99": 306,
+      "max": 434
+     }
+    },
+    "core-flat-single": {
+     "n": 121,
+     "n_clean": 2,
+     "n_problem": 119,
+     "n_conditioned": 0,
+     "supervision": {
+      "localization": 121,
+      "channels": 0,
+      "overall_score": 0,
+      "pq": 121,
+      "sc": 121
+     },
+     "prompt_schemas": {
+      "{\"axes\": true, \"channels\": false, \"grid\": true, \"score1\": false}": 121
+     },
+     "target_schemas": {
+      "{\"channels\": false, \"grid\": true, \"pq\": true, \"sc\": true, \"score\": false}": 121
+     },
+     "gt_cells": {
+      "p50": 48,
+      "p90": 169,
+      "p99": 256,
+      "max": 256
+     },
+     "target_chars": {
+      "p50": 176,
+      "p90": 481,
+      "p99": 713,
+      "max": 713
+     }
+    }
+   }
+  }
+ ],
+ "eval_data": [
+  {
+   "path": "eval_samples/eval_suite.jsonl",
+   "md5": "5c27d0091ef47be4d7a2d46f72732279",
+   "n_rows": 1300,
+   "sources": {
+    "COCO-real": {
+     "n": 100,
+     "with_score_gt": 100,
+     "with_spatial_gt": 100,
+     "template_captions": 0
+    },
+    "EvalMuse": {
+     "n": 200,
+     "with_score_gt": 200,
+     "with_spatial_gt": 0,
+     "template_captions": 0
+    },
+    "ImagenWorld-MRIE": {
+     "n": 50,
+     "with_score_gt": 50,
+     "with_spatial_gt": 50,
+     "template_captions": 0
+    },
+    "ImagenWorld-MRIG": {
+     "n": 50,
+     "with_score_gt": 50,
+     "with_spatial_gt": 50,
+     "template_captions": 0
+    },
+    "ImagenWorld-SRIE": {
+     "n": 50,
+     "with_score_gt": 50,
+     "with_spatial_gt": 50,
+     "template_captions": 0
+    },
+    "ImagenWorld-SRIG": {
+     "n": 50,
+     "with_score_gt": 50,
+     "with_spatial_gt": 50,
+     "template_captions": 0
+    },
+    "ImagenWorld-TIE": {
+     "n": 50,
+     "with_score_gt": 50,
+     "with_spatial_gt": 50,
+     "template_captions": 0
+    },
+    "ImagenWorld-TIG": {
+     "n": 50,
+     "with_score_gt": 50,
+     "with_spatial_gt": 50,
+     "template_captions": 0
+    },
+    "PAL4VST-test": {
+     "n": 300,
+     "with_score_gt": 0,
+     "with_spatial_gt": 300,
+     "template_captions": 0
+    },
+    "RichHF-18K": {
+     "n": 400,
+     "with_score_gt": 400,
+     "with_spatial_gt": 400,
+     "template_captions": 0
+    }
+   }
+  },
+  {
+   "path": "eval_samples/pal4vst_test.jsonl",
+   "md5": "fa2224c1560716dce45c7e949cf88216",
+   "n_rows": 1405,
+   "sources": {
+    "PAL4VST-test": {
+     "n": 1405,
+     "with_score_gt": 0,
+     "with_spatial_gt": 1405,
+     "template_captions": 0
+    }
+   }
+  },
+  {
+   "path": "eval_samples/evalmuse_test.jsonl",
+   "md5": "be54a2f424ce6fd4d9da87c18163eb4e",
+   "n_rows": 2000,
+   "sources": {
+    "EvalMuse": {
+     "n": 2000,
+     "with_score_gt": 2000,
+     "with_spatial_gt": 0,
+     "template_captions": 0
+    }
+   }
+  },
+  {
+   "path": "eval_samples/richhf_test.jsonl",
+   "md5": "2e611dfa1025261f8f35354daeab9f21",
+   "n_rows": 940,
+   "sources": {
+    "RichHF-18K": {
+     "n": 940,
+     "with_score_gt": 940,
+     "with_spatial_gt": 940,
+     "template_captions": 0
+    }
+   }
+  }
+ ],
+ "notes": {
+  "source_inference": "chat rows carry no metadata; source is inferred from image paths (EvalMuse/PAL4VST/COCO) and prompt schema (channels\u2192RichHF, multi-image\u2192ImagenWorld edit); core-flat-single = single-image dual-axis rows (ImagenWorld TIG et al.)",
+  "evalmuse_provenance": "EvalMuse score-only booster rows are appended from the inspector_data_em corpus by bash_scripts/finish_clean_data.sh; viescore2/build_evalmuse_aug.py regenerates those rows byte-identically (and the 384^2-area LANCZOS-capped images pixel-identically) from the official EvalMuse-40K annotations (HF DY-Evalab/EvalMuse) under manifests/evalmuse_aug_ids.json + evalmuse_aug_system_prompt.txt; target = round((mean(total_score)-1)*2.5). Gap closed 2026-08-08."
+ }
+}
