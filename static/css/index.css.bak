@@ -120,11 +120,3 @@ p {
     font-size: 0.95em;
     padding: 0;
 }
-
-.task-tabs {
-    margin-bottom: 0;
-}
-
-.task-panel[hidden] {
-    display: none;
-}

@@ -1,377 +1,380 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VIEScore2</title>
     <meta name="description" content="VIEScore2 jointly predicts quality scores and a 16x16 defect grid in a single model pass, and converts them into faithful explanations with a parameter-free parser.">
+    <meta name="keywords" content="VIEScore2, VIEScore, image evaluation, defect localization, GRPO">
+
     <meta property="og:title" content="VIEScore2: Unified Image Evaluation with Spatially Grounded Explanations" />
     <meta property="og:description" content="VIEScore2 jointly predicts quality scores and a 16x16 defect grid in a single model pass, and converts them into faithful explanations with a parameter-free parser." />
     <meta property="og:url" content="https://tiger-ai-lab.github.io/VIEScore2/" />
-    <meta property="og:image" content="static/images/teaser.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-
+    <meta property="og:image" content="https://tiger-ai-lab.github.io/VIEScore2/static/images/teaser.png" />
+    <meta property="og:image:width" content="2400" />
+    <meta property="og:image:height" content="1023" />
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="VIEScore2: Unified Image Evaluation with Spatially Grounded Explanations">
     <meta name="twitter:description" content="VIEScore2 jointly predicts quality scores and a 16x16 defect grid in a single model pass, and converts them into faithful explanations with a parameter-free parser.">
-    <meta name="twitter:image" content="static/images/teaser.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="keywords" content="VIEScore2, VIEScore, image evaluation, defect localization, GRPO">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:image" content="https://tiger-ai-lab.github.io/VIEScore2/static/images/teaser.png">
 
-    <title>VIEScore2</title>
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-
     <link rel="stylesheet" href="static/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <link rel="stylesheet" href="static/css/index.css">
-
     <script defer src="static/js/fontawesome.all.min.js"></script>
 </head>
 
 <body>
 
-
+    <!-- Title, authors, links -->
     <section class="hero">
         <div class="hero-body">
-            <div class="container is-max-desktop">
-                <div class="columns is-centered">
-                    <div class="column has-text-centered">
-                        <h1 class="title is-1 publication-title">VIEScore2: Unified Image Evaluation with Spatially Grounded Explanations</h1>
-                        <div class="is-size-5 publication-authors">
-                            <!-- Paper authors -->
-                            <span class="author-block">Xianda Du<sup>*♠</sup>,</span>
-                            <span class="author-block">Max Ku<sup>*♠</sup>,</span>
-                            <span class="author-block">Weiming Ren<sup>♠</sup>,</span>
-                            <span class="author-block">Zhi Rui Tam<sup>♡</sup>,</span>
-                            <span class="author-block">Chunlin Ren<sup>♢</sup>,</span>
-                            <span class="author-block">Ping Nie<sup>♠</sup>,</span>
-                            <span class="author-block">Min-Hung Chen<sup>♣</sup>,</span>
-                            <span class="author-block">Wenhu Chen<sup>♠</sup></span>
-                        </div>
+            <div class="container is-max-desktop has-text-centered">
+                <h1 class="title is-1 publication-title">VIEScore2: Unified Image Evaluation with Spatially Grounded Explanations</h1>
+                <div class="is-size-5 publication-authors">
+                    <span class="author-block"><a href="https://cv.allendu.me/" target="_blank">Xianda Du</a><sup>*♠</sup>,</span>
+                    <span class="author-block"><a href="https://kuwingfung.github.io/" target="_blank">Max Ku</a><sup>*♠</sup>,</span>
+                    <span class="author-block"><a href="https://cs.uwaterloo.ca/~w2ren/" target="_blank">Weiming Ren</a><sup>♠</sup>,</span>
+                    <span class="author-block"><a href="https://zrt.wtf/" target="_blank">Zhi Rui Tam</a><sup>♡</sup>,</span>
+                    <span class="author-block">Chunlin Ren<sup>♢</sup>,</span>
+                    <span class="author-block">Ping Nie<sup>♠</sup>,</span>
+                    <span class="author-block"><a href="https://minhungchen.netlify.app/" target="_blank">Min-Hung Chen</a><sup>♣</sup>,</span>
+                    <span class="author-block"><a href="https://wenhuchen.github.io/" target="_blank">Wenhu Chen</a><sup>♠</sup></span>
+                </div>
+                <div class="is-size-6 publication-authors affiliations">
+                    <span class="author-block"><sup>♠</sup>University of Waterloo</span>
+                    <span class="author-block"><sup>♣</sup>NVIDIA</span>
+                    <span class="author-block"><sup>♡</sup>National Taiwan University</span>
+                    <span class="author-block"><sup>♢</sup>Nanyang Technological University</span>
+                    <br><span class="author-block"><sup>*</sup>Equal contribution</span>
+                    <span class="author-block"><span class="icon is-small"><i class="fas fa-envelope"></i></span> <code class="emails">{a32du, m3ku, wenhu.chen}@uwaterloo.ca</code></span>
+                </div>
 
-                        <div class="is-size-5 publication-authors">
-                            <span class="author-block">
-                                <sup>♠</sup>University of Waterloo,
-                                <sup>♣</sup>NVIDIA,
-                                <sup>♡</sup>National Taiwan University,
-                                <sup>♢</sup>Nanyang Technological University
-                            </span>
-                            <span class="author-block"><small><sup>*</sup>Equal contribution</small></span>
-                        </div>
-
-                        <div class="column has-text-centered">
-                            <div class="publication-links">
-
-                                <!-- Github link -->
-                                <span class="link-block">
-                                    <a href="https://github.com/TIGER-AI-Lab/VIEScore2" target="_blank"
-                                    class="external-link button is-normal is-rounded is-dark">
-                                        <span class="icon">
-                                            <i class="fab fa-github"></i>
-                                        </span>
-                                        <span>Code</span>
-                                    </a>
-                                </span>
-
-                                <!-- ArXiv abstract Link -->
-                                <span class="link-block">
-                                    <a href="https://arxiv.org/abs/2610.00994" target="_blank"
-                                    class="external-link button is-normal is-rounded is-dark">
-                                        <span class="icon">
-                                            <i class="ai ai-arxiv"></i>
-                                        </span>
-                                        <span>arXiv</span>
-                                    </a>
-                                </span>
-
-                            </div>
-                        </div>
-                    </div>
+                <div class="publication-links">
+                    <span class="link-block">
+                        <a href="https://arxiv.org/abs/2610.00994" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon"><i class="ai ai-arxiv"></i></span>
+                            <span>arXiv</span>
+                        </a>
+                    </span>
+                    <span class="link-block">
+                        <a href="https://github.com/TIGER-AI-Lab/VIEScore2" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon"><i class="fab fa-github"></i></span>
+                            <span>Code</span>
+                        </a>
+                    </span>
+                    <span class="link-block">
+                        <a href="https://huggingface.co/Allenda/VIEScore2" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">🤗</span>
+                            <span>Model</span>
+                        </a>
+                    </span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Teaser -->
-    <section class="hero">
-        <div class="hero-body">
-            <div class="container is-max-desktop">
-                <div class="columns is-centered">
-                    <div class="column is-full">
-                        <div class="item">
-                            <img src="static/images/teaser.png" alt="An evaluation example with VIEScore2" width="100%"/>
-                            <h2 class="subtitle">
-                                Figure 1: <b>An evaluation example with VIEScore2.</b>
-                                The model predicts perceptual quality (PQ), semantic consistency (SC), and a 16&times;16 defect grid, where red and amber denote visual artifacts and semantic misalignments. A parameter-free parser converts the predictions into natural language.
-                            </h2>
-                        </div>
-                    </div>
+    <section class="section pt-0">
+        <div class="container is-max-widescreen">
+            <figure class="paper-figure">
+                <img src="static/images/teaser.svg" alt="An evaluation example with VIEScore2: inputs, evaluation instruction, predicted scores and defect grid, and the parsed explanation" />
+                <figcaption>
+                    <b>An evaluation example with VIEScore2.</b>
+                    The model predicts perceptual quality (PQ), semantic consistency (SC), and a 16&times;16 defect grid, where red and amber denote visual artifacts and semantic misalignments. A parameter-free parser converts the predictions into natural language.
+                </figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- TL;DR -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">TL;DR</h2>
+            <div class="content tldr">
+                <p>
+                    Most image evaluators give you a single score but don't show <i>where</i> the image goes wrong. <b>VIEScore2</b> is one model that scores generated and edited images <i>and</i> marks the defective regions on a 16&times;16 grid in a single pass. A simple rule-based parser then turns those predictions into a readable explanation.
+                </p>
+                <p>
+                    Because the grid is plain text, it can be trained with SFT and then GRPO using rewards checked directly against ground truth. The result agrees with human ratings better than general-purpose VLMs such as GPT and Gemini under matched inputs, and is competitive with specialized spatial evaluators at localizing defects.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights -->
+    <section class="section has-background-light">
+        <div class="container is-max-desktop">
+            <div class="columns has-text-centered stats">
+                <div class="column">
+                    <p class="stat-value">0.601</p>
+                    <p class="stat-label">overall-score SRCC on the primary suite<br>(best VLM baseline: 0.491)</p>
+                </div>
+                <div class="column">
+                    <p class="stat-value">3 / 6</p>
+                    <p class="stat-label">localization benchmarks ranked first in grid IoU<br>(top three on 5 / 6)</p>
+                </div>
+                <div class="column">
+                    <p class="stat-value">38K</p>
+                    <p class="stat-label">training examples from 5 sources,<br>generation and editing tasks</p>
+                </div>
+            </div>
+            <div class="columns contributions">
+                <div class="column">
+                    <h3 class="title is-5">Unified scoring, localization &amp; explanation</h3>
+                    <p>One model handles generation and editing with zero, one, or multiple conditioning images. It outputs scores and defect locations without task-specific heads; a parameter-free parser turns them into spatially grounded feedback.</p>
+                </div>
+                <div class="column">
+                    <h3 class="title is-5">Verifiable spatial post-training</h3>
+                    <p>Defects are sparse cells on a text-native grid, so outputs are directly parseable. GRPO with a cell-level Dice reward optimizes localization overlap without a learned reward model.</p>
+                </div>
+                <div class="column">
+                    <h3 class="title is-5">Heterogeneous supervision</h3>
+                    <p>Scores, masks, and heatmaps from five sources are normalized into one format, keeping only the supervision each example actually has.</p>
                 </div>
             </div>
         </div>
     </section>
-    <!-- End teaser -->
-
-
-    <!-- Paper abstract -->
-    <section class="hero">
-        <div class="hero-body">
-            <div class="container is-max-desktop">
-                <div class="columns is-centered">
-                    <div class="column has-text-centered">
-                        <h2 class="title is-3">Abstract</h2>
-                        <div class="content has-text-justified">
-                            <p>
-                                Existing synthetic image evaluators typically provide only a scalar quality score and do not identify the image regions that support it. We introduce <b>VIEScore2</b>, a unified evaluator for image generation and editing tasks with optional conditioning images. VIEScore2 represents an image as an N&times;N grid and jointly predicts quality scores and defect locations in a single model pass. Its text-native grid representation provides a common interface for heterogeneous spatial supervision and enables directly verifiable post-training objectives. We train on 38K examples spanning score-only, localization-only, and joint supervision across generation and editing tasks. Starting from supervised fine-tuning, we further apply GRPO to improve defect localization using rewards that combine cell-level Dice overlap, score accuracy, and output-format validity. A parameter-free parser converts the structured predictions into readable explanations. On the primary suite, VIEScore2 achieves an overall-score SRCC of 0.601, compared with 0.491 for Gemini-3-Flash, the strongest zero-shot general-purpose VLM baseline under matched inputs. For defect localization, VIEScore2 outperforms both general-purpose VLMs and specialized spatial evaluators on three of six benchmarks in per-image grid IoU and ranks among the top three on five, including datasets beyond its training sources.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End paper abstract -->
-
 
     <!-- Method -->
-    <section class="hero is-small">
-        <div class="hero-body">
-            <div class="container is-max-desktop">
-                <div class="columns is-centered has-text-centered">
-                    <div class="column">
-                        <h2 class="title is-3">How VIEScore2 works</h2>
-                        <div class="item">
-                            <p>
-                                Heterogeneous spatial supervision (masks, heatmaps) from ImagenWorld, RichHF-18K, PAL4VST and COCO, together with score-only data from EvalMuse-40K, is converted into one common training format: scores on a [0,10] scale and defect cells on an N&times;N grid. Qwen3-VL-8B is first trained with supervised fine-tuning, then with GRPO using a combined verifiable reward: a <b>cell-level Dice reward</b>, a score accuracy reward, and an output format reward. All rewards are computed from the parsed outputs without a learned reward model. At inference, a parameter-free parser turns the predicted scores and defect grid into a faithful explanation.
-                            </p>
-                            <img src="static/images/method.png" alt="Overview of VIEScore2" />
-                            <h2 class="subtitle has-text-centered">
-                                Figure 2: Overview of VIEScore2: data preparation, SFT and GRPO training, and inference. GRPO combines Dice, score, and format rewards. The parameter-free parser converts predicted scores and defect grids into explanations. GT denotes ground truth.
-                            </h2>
-                        </div>
-                    </div>
-                </div>
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">Method</h2>
+            <div class="content">
+                <p>
+                    Masks and heatmaps from ImagenWorld, RichHF-18K, PAL4VST and COCO, together with score-only data from EvalMuse-40K, are converted into one training format: scores on a 0&ndash;10 scale and defect cells on an N&times;N grid, written as text (e.g. <code>r5: 8,9</code> marks columns 8&ndash;9 of row 5). Qwen3-VL-8B is first trained with supervised fine-tuning, then with GRPO using verifiable rewards for cell-level Dice overlap, score accuracy, and output format.
+                </p>
+                <p>
+                    At inference, a parameter-free parser groups the predicted defect cells, describes their locations, and links artifacts to perceptual quality and misalignments to semantic consistency, so explanations stay faithful to the predictions by construction.
+                </p>
             </div>
         </div>
-    </section>
-    <!-- End method -->
-
-
-    <!-- Localization results -->
-    <section class="hero is-small">
-        <div class="hero-body">
-            <div class="container is-max-desktop">
-                <div class="columns is-centered has-text-centered">
-                    <div class="column">
-                        <h2 class="title is-3">Strong localization across benchmarks</h2>
-                        <p>
-                            VIEScore2 ranks first in per-image grid IoU on RichHF (0.299), PAL4VST (0.335), and SynthScars (0.234), second on HAD, and third on AbHuman. It also leads in SynthScars F<sub>1</sub> (0.368). The top-three IoU rankings on five benchmarks show competitive localization across training sources and additional datasets.
-                        </p>
-                        <div class="table-container">
-                            <table class="table is-narrow is-hoverable results-table">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th colspan="4">Training sources</th>
-                                        <th colspan="8">Additional datasets</th>
-                                    </tr>
-                                    <tr>
-                                        <th></th>
-                                        <th colspan="2">RichHF</th>
-                                        <th colspan="2">PAL4VST</th>
-                                        <th colspan="2">AbHuman</th>
-                                        <th colspan="2">HAD</th>
-                                        <th colspan="2">SynthScars</th>
-                                        <th colspan="2">SDG-30K</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Method</th>
-                                        <th>IoU</th><th>F<sub>1</sub></th>
-                                        <th>IoU</th><th>F<sub>1</sub></th>
-                                        <th>IoU</th><th>F<sub>1</sub></th>
-                                        <th>IoU</th><th>F<sub>1</sub></th>
-                                        <th>IoU</th><th>F<sub>1</sub></th>
-                                        <th>IoU</th><th>F<sub>1</sub></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>Qwen3-VL-8B</td><td>0.022</td><td>0.137</td><td>0.026</td><td>0.124</td><td>0.024</td><td>0.108</td><td>0.044</td><td>0.111</td><td>0.026</td><td>0.117</td><td><u>0.114</u></td><td>0.269</td></tr>
-                                    <tr><td>GPT-5.6-terra<sup>&dagger;</sup></td><td>0.096</td><td>0.218</td><td>0.118</td><td>0.239</td><td>0.171</td><td>0.217</td><td>0.148</td><td>0.251</td><td>0.162</td><td>0.281</td><td>0.058</td><td>0.217</td></tr>
-                                    <tr><td>GPT-5.6-sol<sup>&dagger;</sup></td><td>0.156</td><td>0.274</td><td>0.141</td><td>0.248</td><td><u>0.217</u></td><td>0.282</td><td><b>0.211</b></td><td>0.298</td><td>0.186</td><td>0.290</td><td>0.078</td><td>0.258</td></tr>
-                                    <tr><td>Gemini-3-Flash<sup>&dagger;</sup></td><td>0.047</td><td>0.082</td><td>0.048</td><td>0.068</td><td>0.057</td><td>0.079</td><td>0.075</td><td>0.119</td><td>0.062</td><td>0.101</td><td>0.031</td><td>0.068</td></tr>
-                                    <tr><td>Claude Opus 5.5<sup>&dagger;</sup></td><td>0.167</td><td>0.285</td><td>0.140</td><td>0.225</td><td>0.146</td><td><b>0.308</b></td><td>0.142</td><td>0.235</td><td>0.196</td><td>0.358</td><td>0.084</td><td>0.216</td></tr>
-                                    <tr><td>PAL</td><td>0.014</td><td>0.035</td><td><u>0.306</u></td><td><b>0.535</b></td><td>0.009</td><td>0.016</td><td>0.009</td><td>0.038</td><td>0.027</td><td>0.046</td><td>0.007</td><td>0.014</td></tr>
-                                    <tr><td>SegFormer-b0</td><td>0.274</td><td>0.450</td><td>0.146</td><td>0.237</td><td>0.130</td><td>0.246</td><td>0.156</td><td>0.286</td><td>0.170</td><td>0.283</td><td>0.103</td><td>0.260</td></tr>
-                                    <tr><td>RAHF</td><td><u>0.285</u></td><td><b>0.474</b></td><td>0.105</td><td>0.169</td><td>0.141</td><td>0.260</td><td>0.164</td><td>0.281</td><td>0.172</td><td>0.294</td><td>0.068</td><td>0.164</td></tr>
-                                    <tr><td>ImageDoctor</td><td>0.284</td><td><u>0.471</u></td><td>0.100</td><td>0.167</td><td>0.144</td><td><u>0.293</u></td><td>0.158</td><td>0.275</td><td>0.169</td><td>0.305</td><td>0.086</td><td>0.207</td></tr>
-                                    <tr><td>LEGION<sup>&sect;</sup></td><td>0.086</td><td>0.176</td><td>0.074</td><td>0.130</td><td>0.174</td><td>0.152</td><td>0.191</td><td><b>0.324</b></td><td>0.218</td><td><u>0.363</u></td><td>0.038</td><td>0.120</td></tr>
-                                    <tr><td>SDG</td><td>0.140</td><td>0.243</td><td>0.115</td><td>0.196</td><td><b>0.253</b></td><td>0.292</td><td>0.154</td><td>0.228</td><td><u>0.222</u></td><td>0.330</td><td><b>0.137</b></td><td><b>0.353</b></td></tr>
-                                    <tr class="ours"><td><b>VIEScore2</b></td><td><b>0.299</b></td><td>0.466</td><td><b>0.335</b></td><td><u>0.439</u></td><td>0.215</td><td>0.194</td><td><u>0.197</u></td><td><u>0.314</u></td><td><b>0.234</b></td><td><b>0.368</b></td><td>0.102</td><td><u>0.272</u></td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <h2 class="subtitle has-text-centered">
-                            Table 1: Defect localization on six test sets using a shared 16&times;16 grid. Methods use their supported inputs. IoU averages per-image overlap; F<sub>1</sub> pools cell counts. <sup>&dagger;</sup>API models use fixed prompts and temperature 0; <sup>&sect;</sup>LEGION uses its released intermediate checkpoint. <b>Bold</b>: best; <u>underline</u>: second best.
-                        </h2>
-                        <div class="item">
-                            <img src="static/images/qual_grid.png" alt="Qualitative defect-localization examples" />
-                            <h2 class="subtitle has-text-centered">
-                                Figure 3: Selected defect-localization examples across six benchmarks. Red cells denote predictions and green outlines denote ground-truth defect regions. Numbers report per-image grid IoU.
-                            </h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="container is-max-widescreen">
+            <figure class="paper-figure">
+                <img src="static/images/method.svg" alt="Overview of VIEScore2: data preparation, two-stage SFT and GRPO training, and inference" loading="lazy" />
+                <figcaption>
+                    <b>Overview of VIEScore2:</b> data preparation, SFT and GRPO training, and inference. GRPO combines Dice, score, and format rewards. The parameter-free parser converts predicted scores and defect grids into explanations. GT denotes ground truth.
+                </figcaption>
+            </figure>
         </div>
     </section>
-    <!-- End localization results -->
 
-
-    <!-- Scoring results -->
-    <section class="hero is-small">
-        <div class="hero-body">
-            <div class="container is-max-desktop">
-                <div class="columns is-centered has-text-centered">
-                    <div class="column">
-                        <h2 class="title is-3">Joint scoring and localization across tasks</h2>
-                        <p>
-                            On the primary suite, VIEScore2 achieves the highest aggregate overall-score SRCC (0.601), followed by Gemini-3-Flash (0.491) and GPT-5.6-sol (0.437). All models receive the generated image, prompt, and available conditioning images. ImagenWorld covers text-to-image generation (TIG), text-guided editing (TIE), and generation/editing with one (SRIG/SRIE) or multiple conditioning images (MRIG/MRIE).
-                        </p>
-                        <div class="table-container">
-                            <table class="table is-narrow is-hoverable results-table">
-                                <thead>
-                                    <tr>
-                                        <th>Method</th><th>All</th><th>RichHF</th><th>EvalMuse</th><th>TIG</th><th>TIE</th><th>SRIG</th><th>SRIE</th><th>MRIG</th><th>MRIE</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>Qwen3-VL-8B judge<sup>&Dagger;</sup></td><td>0.373</td><td>0.456</td><td>0.473</td><td>0.570</td><td>0.066</td><td>0.128</td><td>0.393</td><td><u>0.537</u></td><td>&minus;0.290</td></tr>
-                                    <tr><td>GPT-5.6-terra<sup>&dagger;</sup></td><td>0.402</td><td>0.440</td><td>0.567</td><td><b>0.640</b></td><td>0.493</td><td>0.258</td><td>0.110</td><td>0.523</td><td>0.539</td></tr>
-                                    <tr><td>GPT-5.6-sol<sup>&dagger;</sup></td><td>0.437</td><td>0.470</td><td><u>0.655</u></td><td><u>0.623</u></td><td><u>0.590</u></td><td>0.275</td><td>0.253</td><td><b>0.539</b></td><td><b>0.684</b></td></tr>
-                                    <tr><td>Gemini-3-Flash<sup>&dagger;</sup></td><td><u>0.491</u></td><td><u>0.515</u></td><td>0.535</td><td>0.531</td><td><b>0.686</b></td><td><u>0.356</u></td><td><b>0.404</b></td><td>0.418</td><td><u>0.677</u></td></tr>
-                                    <tr class="ours"><td><b>VIEScore2</b></td><td><b>0.601</b></td><td><b>0.692</b></td><td><b>0.803</b></td><td>0.589</td><td>0.429</td><td><b>0.375</b></td><td><u>0.403</u></td><td>0.509</td><td>0.417</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <h2 class="subtitle has-text-centered">
-                            Table 2: Overall-score SRCC on the primary suite (900 examples) with matched &chi;<sub>K</sub> inputs. <sup>&dagger;</sup>API correlations use successfully parsed scores. <sup>&Dagger;</sup>Qwen3-VL-8B uses our evaluation instructions without fine-tuning.
-                        </h2>
-
-                        <p>
-                            In the joint setting, VIEScore2 achieves higher localization F<sub>1</sub>, grid IoU, and PQ and SC correlations than the two baselines evaluated with the same inputs.
-                        </p>
-                        <div class="table-container">
-                            <table class="table is-narrow is-hoverable results-table results-table-small">
-                                <thead>
-                                    <tr><th>Model</th><th>Grid IoU</th><th>F<sub>1</sub></th><th>PQ SRCC</th><th>SC SRCC</th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>Qwen3-VL-8B</td><td>0.070</td><td><u>0.273</u></td><td>0.181</td><td>0.352</td></tr>
-                                    <tr><td>GPT-5.6-terra<sup>&dagger;</sup></td><td><u>0.112</u></td><td>0.247</td><td><u>0.357</u></td><td><u>0.508</u></td></tr>
-                                    <tr class="ours"><td><b>VIEScore2</b></td><td><b>0.324</b></td><td><b>0.506</b></td><td><b>0.558</b></td><td><b>0.564</b></td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <h2 class="subtitle has-text-centered">
-                            Table 3: Joint evaluation with matched &chi;<sub>K</sub> inputs. Localization uses 1,100 examples; PQ/SC SRCC uses 700. Grid IoU excludes empty ground-truth grids. <sup>&dagger;</sup>GPT-5.6-terra returns valid scores for 554/700 examples.
-                        </h2>
-                    </div>
-                </div>
+    <!-- Examples -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">VIEScore2 in Action</h2>
+            <div class="content">
+                <p>
+                    A held-out RichHF example, end to end: the model's raw output lists scores and defect cells row by row (<code>!</code> marks cells with high annotation coverage), and the parameter-free parser turns it into the explanation on the right.
+                </p>
             </div>
+            <figure class="paper-figure">
+                <img src="static/images/walkthrough.svg" alt="A RichHF example showing the generated image, ground-truth grid, predicted grid, raw model output, and the parser's explanation" loading="lazy" />
+                <figcaption>
+                    A RichHF example with annotations, predictions, raw output, and the parameter-free parser's explanation. Red denotes artifacts and blue misalignment.
+                </figcaption>
+            </figure>
+
+            <div class="content mt-6">
+                <p>
+                    The same model handles all six ImagenWorld tasks: text-to-image generation (TIG), text-guided editing (TIE), and generation/editing with one (SRIG/SRIE) or multiple (MRIG/MRIE) conditioning images.
+                </p>
+            </div>
+            <div class="tabs is-centered is-toggle is-small task-tabs">
+                <ul>
+                    <li class="is-active" data-target="tasks-1"><a>TIG &middot; TIE &middot; SRIG</a></li>
+                    <li data-target="tasks-2"><a>SRIE &middot; MRIG &middot; MRIE</a></li>
+                </ul>
+            </div>
+            <figure class="paper-figure task-panel" id="tasks-1">
+                <img src="static/images/task_examples_1.svg" alt="TIG, TIE, and SRIG examples with inputs, ground-truth and predicted defect grids" loading="lazy" />
+                <figcaption>TIG, TIE, and SRIG examples. Orange cells mark defects.</figcaption>
+            </figure>
+            <figure class="paper-figure task-panel" id="tasks-2" hidden>
+                <img src="static/images/task_examples_2.svg" alt="SRIE, MRIG, and MRIE examples with inputs, ground-truth and predicted defect grids" loading="lazy" />
+                <figcaption>SRIE, MRIG, and MRIE examples. Orange cells mark defects.</figcaption>
+            </figure>
         </div>
     </section>
-    <!-- End scoring results -->
 
-
-    <!-- GRPO + grid resolution -->
-    <section class="hero is-small">
-        <div class="hero-body">
-            <div class="container is-max-desktop">
-                <div class="columns is-centered has-text-centered">
-                    <div class="column">
-                        <h2 class="title is-3">GRPO and grid resolution</h2>
-                        <p>
-                            Across three independent runs, GRPO improves grid IoU by 0.024&ndash;0.029 over the shared SFT checkpoint, whereas an additional SFT epoch gives 0.001. Training with the cell-level Dice reward alone raises grid IoU from 0.296 to 0.320, accounting for most of the gain; the full reward reaches 0.324 IoU and 0.506 F<sub>1</sub> at an overall-score SRCC of 0.601.
-                        </p>
-                        <p>
-                            We choose N=16: trained pixel-IoU is similar at N=12 and N=16 (0.235/0.231) and falls to 0.192 at N=32, while N=16 preserves annotations better than N=12 (model-free pixel-IoU 0.615/0.535) and its 95th-percentile target is far shorter than at N=32 (471/1,926 tokens).
-                        </p>
-                        <div class="item">
-                            <img src="static/images/grid_tradeoff.png" alt="Grid resolution trade-off" />
-                            <h2 class="subtitle has-text-centered">
-                                Figure 4: Grid resolution versus annotation fidelity, output length, and trained localization. Annotation fidelity compares grids with native masks. Shading marks N=16.
-                            </h2>
-                        </div>
-                    </div>
-                </div>
+    <!-- Localization -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">Strong Localization across Benchmarks</h2>
+            <div class="content">
+                <p>
+                    All spatial predictions are compared on a shared 16&times;16 grid. VIEScore2 ranks first in per-image grid IoU on RichHF (0.299), PAL4VST (0.335), and SynthScars (0.234), second on HAD, and third on AbHuman, and it also leads in SynthScars F<sub>1</sub> (0.368).
+                </p>
             </div>
+            <div class="table-container">
+                <table class="table is-narrow is-hoverable results-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th colspan="4">Training sources</th>
+                            <th colspan="8">Additional datasets</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th colspan="2">RichHF</th>
+                            <th colspan="2">PAL4VST</th>
+                            <th colspan="2">AbHuman</th>
+                            <th colspan="2">HAD</th>
+                            <th colspan="2">SynthScars</th>
+                            <th colspan="2">SDG-30K</th>
+                        </tr>
+                        <tr>
+                            <th>Method</th>
+                            <th>IoU</th><th>F<sub>1</sub></th>
+                            <th>IoU</th><th>F<sub>1</sub></th>
+                            <th>IoU</th><th>F<sub>1</sub></th>
+                            <th>IoU</th><th>F<sub>1</sub></th>
+                            <th>IoU</th><th>F<sub>1</sub></th>
+                            <th>IoU</th><th>F<sub>1</sub></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Qwen3-VL-8B</td><td>0.022</td><td>0.137</td><td>0.026</td><td>0.124</td><td>0.024</td><td>0.108</td><td>0.044</td><td>0.111</td><td>0.026</td><td>0.117</td><td><u>0.114</u></td><td>0.269</td></tr>
+                        <tr><td>GPT-5.6-terra<sup>&dagger;</sup></td><td>0.096</td><td>0.218</td><td>0.118</td><td>0.239</td><td>0.171</td><td>0.217</td><td>0.148</td><td>0.251</td><td>0.162</td><td>0.281</td><td>0.058</td><td>0.217</td></tr>
+                        <tr><td>GPT-5.6-sol<sup>&dagger;</sup></td><td>0.156</td><td>0.274</td><td>0.141</td><td>0.248</td><td><u>0.217</u></td><td>0.282</td><td><b>0.211</b></td><td>0.298</td><td>0.186</td><td>0.290</td><td>0.078</td><td>0.258</td></tr>
+                        <tr><td>Gemini-3-Flash<sup>&dagger;</sup></td><td>0.047</td><td>0.082</td><td>0.048</td><td>0.068</td><td>0.057</td><td>0.079</td><td>0.075</td><td>0.119</td><td>0.062</td><td>0.101</td><td>0.031</td><td>0.068</td></tr>
+                        <tr><td>Claude Opus 5.5<sup>&dagger;</sup></td><td>0.167</td><td>0.285</td><td>0.140</td><td>0.225</td><td>0.146</td><td><b>0.308</b></td><td>0.142</td><td>0.235</td><td>0.196</td><td>0.358</td><td>0.084</td><td>0.216</td></tr>
+                        <tr><td>PAL</td><td>0.014</td><td>0.035</td><td><u>0.306</u></td><td><b>0.535</b></td><td>0.009</td><td>0.016</td><td>0.009</td><td>0.038</td><td>0.027</td><td>0.046</td><td>0.007</td><td>0.014</td></tr>
+                        <tr><td>SegFormer-b0</td><td>0.274</td><td>0.450</td><td>0.146</td><td>0.237</td><td>0.130</td><td>0.246</td><td>0.156</td><td>0.286</td><td>0.170</td><td>0.283</td><td>0.103</td><td>0.260</td></tr>
+                        <tr><td>RAHF</td><td><u>0.285</u></td><td><b>0.474</b></td><td>0.105</td><td>0.169</td><td>0.141</td><td>0.260</td><td>0.164</td><td>0.281</td><td>0.172</td><td>0.294</td><td>0.068</td><td>0.164</td></tr>
+                        <tr><td>ImageDoctor</td><td>0.284</td><td><u>0.471</u></td><td>0.100</td><td>0.167</td><td>0.144</td><td><u>0.293</u></td><td>0.158</td><td>0.275</td><td>0.169</td><td>0.305</td><td>0.086</td><td>0.207</td></tr>
+                        <tr><td>LEGION<sup>&sect;</sup></td><td>0.086</td><td>0.176</td><td>0.074</td><td>0.130</td><td>0.174</td><td>0.152</td><td>0.191</td><td><b>0.324</b></td><td>0.218</td><td><u>0.363</u></td><td>0.038</td><td>0.120</td></tr>
+                        <tr><td>SDG</td><td>0.140</td><td>0.243</td><td>0.115</td><td>0.196</td><td><b>0.253</b></td><td>0.292</td><td>0.154</td><td>0.228</td><td><u>0.222</u></td><td>0.330</td><td><b>0.137</b></td><td><b>0.353</b></td></tr>
+                        <tr class="ours"><td><b>VIEScore2</b></td><td><b>0.299</b></td><td>0.466</td><td><b>0.335</b></td><td><u>0.439</u></td><td>0.215</td><td>0.194</td><td><u>0.197</u></td><td><u>0.314</u></td><td><b>0.234</b></td><td><b>0.368</b></td><td>0.102</td><td><u>0.272</u></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="table-caption">
+                Defect localization on six test sets using a shared 16&times;16 grid. IoU averages per-image overlap; F<sub>1</sub> pools cell counts. <sup>&dagger;</sup>API models use fixed prompts and temperature 0. <sup>&sect;</sup>LEGION uses its released intermediate checkpoint. <b>Bold</b>: best; <u>underline</u>: second best.
+            </p>
+        </div>
+        <div class="container is-max-widescreen">
+            <figure class="paper-figure">
+                <img src="static/images/qual_grid.svg" alt="Qualitative defect-localization examples on six benchmarks comparing VIEScore2, GPT-5.6-sol, Opus 5.5 and ImageDoctor" loading="lazy" />
+                <figcaption>
+                    Selected defect-localization examples across six benchmarks. Red cells denote predictions and green outlines denote ground-truth defect regions. Numbers report per-image grid IoU.
+                </figcaption>
+            </figure>
         </div>
     </section>
-    <!-- End GRPO + grid resolution -->
 
+    <!-- Scoring -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">Quality Scoring across Tasks</h2>
+            <div class="content">
+                <p>
+                    With matched inputs (generated image, prompt, and any conditioning images), VIEScore2 achieves the highest aggregate overall-score SRCC. ImagenWorld covers text-to-image generation (TIG), text-guided editing (TIE), and generation/editing with one (SRIG/SRIE) or multiple conditioning images (MRIG/MRIE). In joint evaluation, VIEScore2 also reaches 0.324 grid IoU and 0.506 F<sub>1</sub> with PQ/SC SRCC of 0.558/0.564, ahead of Qwen3-VL-8B and GPT-5.6-terra on every metric.
+                </p>
+            </div>
+            <div class="table-container">
+                <table class="table is-narrow is-hoverable results-table">
+                    <thead>
+                        <tr>
+                            <th>Method</th><th>All</th><th>RichHF</th><th>EvalMuse</th><th>TIG</th><th>TIE</th><th>SRIG</th><th>SRIE</th><th>MRIG</th><th>MRIE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Qwen3-VL-8B judge<sup>&Dagger;</sup></td><td>0.373</td><td>0.456</td><td>0.473</td><td>0.570</td><td>0.066</td><td>0.128</td><td>0.393</td><td><u>0.537</u></td><td>&minus;0.290</td></tr>
+                        <tr><td>GPT-5.6-terra<sup>&dagger;</sup></td><td>0.402</td><td>0.440</td><td>0.567</td><td><b>0.640</b></td><td>0.493</td><td>0.258</td><td>0.110</td><td>0.523</td><td>0.539</td></tr>
+                        <tr><td>GPT-5.6-sol<sup>&dagger;</sup></td><td>0.437</td><td>0.470</td><td><u>0.655</u></td><td><u>0.623</u></td><td><u>0.590</u></td><td>0.275</td><td>0.253</td><td><b>0.539</b></td><td><b>0.684</b></td></tr>
+                        <tr><td>Gemini-3-Flash<sup>&dagger;</sup></td><td><u>0.491</u></td><td><u>0.515</u></td><td>0.535</td><td>0.531</td><td><b>0.686</b></td><td><u>0.356</u></td><td><b>0.404</b></td><td>0.418</td><td><u>0.677</u></td></tr>
+                        <tr class="ours"><td><b>VIEScore2</b></td><td><b>0.601</b></td><td><b>0.692</b></td><td><b>0.803</b></td><td>0.589</td><td>0.429</td><td><b>0.375</b></td><td><u>0.403</u></td><td>0.509</td><td>0.417</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="table-caption">
+                Overall-score SRCC on the primary suite (900 examples) with matched inputs. <sup>&dagger;</sup>API correlations use successfully parsed scores. <sup>&Dagger;</sup>Qwen3-VL-8B uses our evaluation instructions without fine-tuning.
+            </p>
+        </div>
+    </section>
 
-    <!-- BibTex citation -->
+    <!-- Analysis -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">Analysis</h2>
+            <div class="content">
+                <ul>
+                    <li><b>GRPO beats more SFT.</b> Across three runs, GRPO improves grid IoU by 0.024&ndash;0.029 over the shared SFT checkpoint; an extra SFT epoch gives only 0.001.</li>
+                    <li><b>The Dice reward does the work.</b> Dice alone raises grid IoU from 0.296 to 0.320; the full reward reaches 0.324 IoU and 0.506 F<sub>1</sub>.</li>
+                    <li><b>Conditioning images help.</b> On the same 250 conditional examples, giving the model the source/reference images raises overall-score SRCC from 0.420 to 0.451 and localization F<sub>1</sub> from 0.514 to 0.536, with everything else held fixed.</li>
+                    <li><b>N=16 balances fidelity and length.</b> Trained pixel-IoU is similar at N=12 and N=16 (0.235/0.231) and drops at N=32 (0.192). N=16 preserves annotations better than N=12 (0.615 vs. 0.535) while keeping 95th-percentile targets far shorter than N=32 (471 vs. 1,926 tokens).</li>
+                </ul>
+            </div>
+            <figure class="paper-figure">
+                <img src="static/images/grid_tradeoff.svg" alt="Grid resolution versus annotation fidelity, output length, and trained localization" loading="lazy" />
+                <figcaption>
+                    Grid resolution versus annotation fidelity, output length, and trained localization. Annotation fidelity compares grids with native masks. Shading marks N=16.
+                </figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- Limitations -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">Limitations</h2>
+            <div class="content">
+                <ul>
+                    <li><b>Coarse grid.</b> A 16&times;16 grid can miss small defects and only roughly follows irregular boundaries.</li>
+                    <li><b>Faithful is not the same as correct.</b> The parser's explanations faithfully reflect the predicted scores and grid, but don't check whether those predictions are right or explain why a defect occurs.</li>
+                    <li><b>False alarms.</b> GRPO can increase false alarms on some clean-image subsets, trading conservative clean-image recognition for stronger localization.</li>
+                    <li><b>One backbone.</b> VIEScore2 is validated only with Qwen3-VL-8B; other backbones and scales remain untested.</li>
+                </ul>
+            </div>
+            <figure class="paper-figure">
+                <img src="static/images/failure_cases.svg" alt="Failure cases: small defects lost on the grid, missed misalignment, a false alarm on a clean image, and an incorrect prediction with its explanation" loading="lazy" />
+                <figcaption>
+                    Failure cases: lost small defects, missed misalignment, false alarms, and an incorrect prediction with its explanation.
+                </figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- Citation -->
     <section class="section" id="BibTeX">
         <div class="container is-max-desktop content">
-            <h2 class="title">Citation</h2>
-            <p>Citation will be available soon.</p>
+            <h2 class="title is-3">Citation</h2>
+            <pre><code>@misc{du2026viescore2unifiedimageevaluation,
+      title={VIEScore2: Unified Image Evaluation with Spatially Grounded Explanations},
+      author={Xianda Du and Max Ku and Weiming Ren and Zhi Rui Tam and Chunlin Ren and Ping Nie and Min-Hung Chen and Wenhu Chen},
+      year={2026},
+      eprint={2610.00994},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2610.00994},
+}</code></pre>
         </div>
     </section>
 
-
     <footer class="footer">
-        <div class="container">
-            <div class="columns is-centered">
-                <div class="column is-8">
-                    <div class="content">
-
-                        <p>
-                            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page. You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"
-                                target="_blank">Creative
-              Commons Attribution-ShareAlike 4.0 International License</a>.
-                        </p>
-
-                    </div>
-                </div>
-            </div>
+        <div class="container is-max-desktop content has-text-centered">
+            <p>
+                This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>, adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+                This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
         </div>
     </footer>
 
+    <script>
+        document.querySelectorAll('.task-tabs li').forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                document.querySelectorAll('.task-tabs li').forEach(function (t) {
+                    var active = t === tab;
+                    t.classList.toggle('is-active', active);
+                    document.getElementById(t.dataset.target).hidden = !active;
+                });
+            });
+        });
+    </script>
+
 </body>
-<style>
-    .results-table {
-        margin: 1rem auto;
-        font-size: 14px;
-    }
-
-    .results-table th,
-    .results-table td {
-        text-align: center !important;
-        vertical-align: middle;
-        white-space: nowrap;
-    }
-
-    .results-table td:first-child,
-    .results-table th:first-child {
-        text-align: left !important;
-    }
-
-    .results-table tr.ours td {
-        border-top: 2px solid #363636;
-        background-color: #f5f9ff;
-    }
-
-    .results-table-small {
-        width: auto;
-    }
-
-    .item img {
-        margin: 1rem 0;
-    }
-
-    a.button[disabled] {
-        pointer-events: none;
-    }
-</style>
 
 </html>
