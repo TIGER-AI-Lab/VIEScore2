@@ -95,4 +95,14 @@ are tuned once on the RichHF tuning slice and carried frozen everywhere.
 
 ## Citation
 
-Citation will be available soon.
+```bibtex
+@misc{du2026viescore2unifiedimageevaluation,
+      title={VIEScore2: Unified Image Evaluation with Spatially Grounded Explanations}, 
+      author={Xianda Du and Max Ku and Weiming Ren and Zhi Rui Tam and Chunlin Ren and Ping Nie and Min-Hung Chen and Wenhu Chen},
+      year={2026},
+      eprint={2610.00994},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2610.00994}, 
+}
+```
