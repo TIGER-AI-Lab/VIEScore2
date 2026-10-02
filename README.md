@@ -1,5 +1,7 @@
 # VIEScore2
 
+[![arXiv](https://img.shields.io/badge/arXiv-2610.00994-b31b1b.svg)](https://arxiv.org/abs/2610.00994)
+
 [![contributors](https://img.shields.io/github/contributors/TIGER-AI-Lab/VIEScore2)](https://github.com/TIGER-AI-Lab/VIEScore2/graphs/contributors)
 [![license](https://img.shields.io/github/license/TIGER-AI-Lab/VIEScore2.svg)](https://github.com/TIGER-AI-Lab/VIEScore2/blob/main/LICENSE)
 [![GitHub](https://img.shields.io/github/stars/TIGER-AI-Lab/VIEScore2?style=social)](https://github.com/TIGER-AI-Lab/VIEScore2)
