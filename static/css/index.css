@@ -128,3 +128,31 @@ p {
 .task-panel[hidden] {
     display: none;
 }
+
+/* Theater mode: edge-to-edge dark band; the player grows to the viewport width,
+   capped so it never runs taller than the screen */
+.teaser-theater {
+    background: #0b0d12;
+    padding: 0 0 1.5rem;
+    margin: 0 0 1.5rem;
+}
+
+.teaser-theater-inner {
+    max-width: min(1600px, calc((100vh - 96px) * 16 / 9));
+    margin: 0 auto;
+}
+
+.teaser-theater video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    background: #000;
+}
+
+@media screen and (max-width: 768px) {
+    .teaser-theater {
+        padding-bottom: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+}
